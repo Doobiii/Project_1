@@ -1,0 +1,18 @@
+.about-page header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../images/img1.jpg);
+    height: 50vh;
+    background-size: cover;
+    background-position: center;
+}
+.content-section img {
+    width: 15%;
+    border-width: thin;
+}
+@media screen and (max-width: 992px) {
+    .deta{
+        width: max-content;
+    }
+    .row{
+        gap: 1.4rem;
+    }
+}

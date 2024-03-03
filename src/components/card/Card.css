@@ -1,0 +1,192 @@
+ /*========== Colors ==========*/
+    /*Color mode HSL(hue, saturation, lightness)*/
+    :root{
+    --first-color: hsl(82, 60%, 28%);
+    --title-color: hsl(0, 0%, 15%);
+    --text-color: hsl(0, 0%, 35%);
+    --body-color: hsl(0, 0%, 95%);
+    --container-color: hsl(0, 0%, 100%);
+  
+    /*========== Font and typography ==========*/
+    /*.5rem = 8px | 1rem = 16px ...*/
+
+    --body-font: "Poppins", sans-serif;
+    --h2-font-size: 1.25rem;
+    --small-font-size: .813rem;
+  }
+  
+  /*========== Responsive typography ==========*/
+  @media screen and (min-width: 1200px) {
+    :root {
+      --h2-font-size: 1.4rem;
+      --small-font-size: .85rem;
+    }
+  }
+  
+  /*=============== BASE ===============*/
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  
+  body {
+    font-family: var(--body-font);
+    background-color: var(--body-color);
+    color: var(--text-color);
+  }
+  
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /*=============== CARD ===============*/
+  .containerrr {
+    display: grid;
+    place-items: center;
+    margin-inline: 1.5rem;
+    padding-block: 5rem;
+  }
+
+  
+  .card__article {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .card__img {
+    width: 320px;
+    border-radius: 1.5rem;
+  }
+  
+  .card__data {
+    width: 280px;
+    background-color: var(--container-color);
+    padding: 1rem 2rem;
+    box-shadow: 0 8px 24px hsla(0, 0%, 0%, .15);
+    border-radius: 1rem;
+    position: absolute;
+    bottom: -9.5rem;
+    left: 0;
+    right: 0;
+    margin-inline: auto;
+    opacity: 0;
+    transition: opacity 1s 1s;
+  }
+  
+  .card__description {
+    display: block;
+    font-size: var(--small-font-size);
+    margin-bottom: .25rem;
+  }
+  
+  .card__title {
+    font-size: var(--h2-font-size);
+    font-weight: 500;
+    color: var(--title-color);
+    margin-bottom: .6rem;
+  }
+  
+  .card__button {
+    text-decoration: none;
+    font-size: var(--small-font-size);
+    font-weight: 500;
+    color: var(--first-color);
+  }
+  
+  .card__button:hover {
+    text-decoration: underline;
+  }
+  
+  /* Naming animations in hover */
+  .card__article:hover .card__data {
+    animation: show-data 1s forwards;
+    opacity: 1;
+    transition: opacity .4s;
+  }
+  
+  .card__article:hover {
+    animation: remove-overflow 2s forwards;
+  }
+  
+  .card__article:not(:hover) {
+    animation: show-overflow 2s forwards;
+  }
+  
+  .card__article:not(:hover) .card__data {
+    animation: remove-data 1s forwards;
+  }
+  
+  /* Card animation */
+  @keyframes show-data {
+    50% {
+      transform: translateY(-10rem);
+    }
+    100% {
+      transform: translateY(-7rem);
+    }
+  }
+  
+  @keyframes remove-overflow {
+    to {
+      overflow: initial;
+    }
+  }
+  
+  @keyframes remove-data {
+    0% {
+      transform: translateY(-7rem);
+    }
+    50% {
+      transform: translateY(-10rem);
+    }
+    100% {
+      transform: translateY(.5rem);
+    }
+  }
+  
+  @keyframes show-overflow {
+    0% {
+      overflow: initial;
+      pointer-events: none;
+    }
+    50% {
+      overflow: hidden;
+    }
+  }
+  
+  /*=============== BREAKPOINTS ===============*/
+  /* For small devices */
+  @media screen and (max-width: 340px) {
+    .containerrr {
+      margin-inline: 1rem;
+    }
+  
+    .card__data {
+      width: 250px;
+      padding: 0.8rem;
+    }
+  }
+  
+@media screen and (min-width: 768px) {
+  .card__data {
+      max-width: 80%; /* Adjust based on desired width */
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .card__data {
+      max-width: 90%; /* Adjust based on desired width */
+  }
+}
+
+
+
+
+@media screen and (min-width: 1200px) {
+  .card__data {
+      max-width: 100%; /* Adjust based on desired width */
+  }
+}
